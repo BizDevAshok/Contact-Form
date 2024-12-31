@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background-color: #000;
+  color: #c918ab;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+}
+
+div.gallery {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: aliceblue;
+  border: 1.5px solid #0fdd2e;
+  padding: 15px;
+  box-sizing: border-box;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(20px); /* Initial position for animation */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+div.gallery:hover {
+  border: 1px solid #c20bad;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+  background-color: #c918ab;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6pxpx;
+  float: left;
+  width: 100%;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Button Styles */
+.gallery .btn {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #1dfa2c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  text-decoration: none;
+  width: 115px;
+}
+
+.gallery .btn:hover {
+  background-color: #c918ab;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 100%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (min-width: 701px) {
+  .responsive {
+    width: 48%; /* Adjust the width to leave some margin between two columns */
+    margin: 6px 1%; /* Add a little margin between columns */
+  }
+}
+
+/* Scroll Animation */
+.gallery.animate {
+  opacity: 1;
+  transform: translateY(0 1);
+}
+
+/* Footer Styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+</style>
+</head>
+<body>
+
+  <h2>Some sample of login and contact form are given;</h2>
+
+  <div class="responsive">
+    <div class="gallery">
+      <div class="desc">A login form samples.</div>
+        <a href="contactform.htm" class="btn">Live Demo</a>
+    </div>
+  </div><br>
+
+  
+  <div class="responsive">
+    <div class="gallery">
+      <div class="desc">A login form samples.</div>
+        <a href="loginform1.htm" class="btn">Live Demo</a>
+    </div>
+  </div><br>
+  
+  <div class="responsive">
+    <div class="gallery">
+      <div class="desc">A login form samples.</div>
+      <a href="loginform2.htm" class="btn">Live Demo</a>
+    </div>
+  </div><br>
+
+  <div class="responsive">
+    <div class="gallery">
+      <div class="desc">A login form samples.</div>
+      <a href="contact.htm" class="btn">Live Demo</a>
+    </div>
+  </div><br>
+  
+  <div class="clearfix"></div><br><br><br><br><br><br><br><br>
+  
+
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var galleries = document.querySelectorAll('.gallery');
+  
+      function isInViewport(element) {
+        var rect = element.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
+  
+      function animateOnScroll() {
+        galleries.forEach(function(gallery) {
+          if (isInViewport(gallery) && !gallery.classList.contains('animate')) {
+            gallery.style.opacity = '1';
+            gallery.style.transform = 'translateY(0)';
+            gallery.classList.add('animate');
+          }
+        });
+      }
+  
+      // Initial check on page load
+      animateOnScroll();
+  
+      // Throttle the scroll event for better performance
+      var throttleTimeout;
+      window.addEventListener('scroll', function() {
+        if (!throttleTimeout) {
+          throttleTimeout = setTimeout(function() {
+            animateOnScroll();
+            throttleTimeout = null;
+          }, 250);
+        }
+      });
+    });
+  </script>
+
+  </body>
+  </html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #000;
+          margin: 0;
+          padding: 0;
+      }
+      form {
+          width: 300px;
+          margin: 100px auto;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 8px;
+      }
+     
+  
+      .login-link {
+           margin-top: 10px;
+           text-align: center;
+           display: block;
+           width: 50px;
+           text-decoration: none;
+           color: #0cd4de;
+      }
+
+      .login-link:hover {
+          background-color: #00b300;
+      }
+
+
+/* Common styles */
+.form-element {
+    margin: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: calc(100% - 20px); /* Adjusted width for responsiveness */
+    box-sizing: border-box; /* Ensures padding doesn't affect the total width */
+}
+
+.role {
+    margin: 10px 0;
+}
+
+.login-link {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #0cd4de;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+    /* Adjustments for smaller screens */
+    .form-element {
+        font-size: 14px;
+    }
+
+    .login-link {
+        margin-top: 20px; /* Increased margin for better separation */
+    }
+}
+h1{
+    text-align: center;
+    color: chartreuse;
+}
+      </style>
+          <body>
+            <h1>Login Form 1</h1>
+              <form>
+                  <input type="text" name="Username" class="form-element" placeholder="Username"/><br>
+                  <input type="password" name="password" id="passwordField" class="form-element" placeholder="Password"/><br>                        
+                  <div class="role">
+                      <input type="checkbox" id="showPassword"> Show Password<br>
+                      <input type="radio" name="role" value="admin"/><b>Admine</br>
+                      <input type="radio" name="role" value="user"/><b>user<br>
+                  </div>
+      
+                  <div class="role">
+                      <input type="checkbox" name="flag" value="true"/>Agree all the terms and conditions.
+                  </div>
+      
+                  <a href="#" class="login-link">Log In</a>
+              </form>
+              <script>
+                    const passwordField = document.getElementById('passwordField');
+                    const showPasswordCheckbox = document.getElementById('showPassword');
+
+                    showPasswordCheckbox.addEventListener('change', function() {
+                    const passwordFieldType = this.checked ? 'text' : 'password';
+                     passwordField.setAttribute('type', passwordFieldType);});
+                  </script>
+  
+</body>
+</html>
